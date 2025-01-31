@@ -1,4 +1,4 @@
-package fr.apex.grid;
+package fr.mehdichadi.grid;
 
 public class GridGame {
     private final Grid initialGrid;

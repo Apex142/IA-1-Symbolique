@@ -1,7 +1,7 @@
-package fr.apex.grid.reader;
+package fr.mehdichadi.grid.reader;
 
-import fr.apex.grid.GridGame;
-import fr.apex.grid.strategy.GridReaderStrategy;
+import fr.mehdichadi.grid.GridGame;
+import fr.mehdichadi.grid.strategy.GridReaderStrategy;
 
 import java.io.IOException;
 

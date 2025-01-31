@@ -1,6 +1,6 @@
-import fr.apex.grid.GridGame;
-import fr.apex.grid.reader.GridReader;
-import fr.apex.grid.strategy.GridFileReader;
+import fr.mehdichadi.grid.GridGame;
+import fr.mehdichadi.grid.reader.GridReader;
+import fr.mehdichadi.grid.strategy.GridFileReader;
 
 import java.io.IOException;
 

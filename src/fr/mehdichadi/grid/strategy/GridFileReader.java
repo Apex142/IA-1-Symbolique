@@ -1,7 +1,7 @@
-package fr.apex.grid.strategy;
+package fr.mehdichadi.grid.strategy;
 
-import fr.apex.grid.Grid;
-import fr.apex.grid.GridGame;
+import fr.mehdichadi.grid.Grid;
+import fr.mehdichadi.grid.GridGame;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

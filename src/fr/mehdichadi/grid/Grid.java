@@ -1,4 +1,4 @@
-package fr.apex.grid;
+package fr.mehdichadi.grid;
 
 import java.util.Arrays;
 import java.util.Objects;

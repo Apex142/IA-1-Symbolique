@@ -1,6 +1,6 @@
-package fr.apex.grid.strategy;
+package fr.mehdichadi.grid.strategy;
 
-import fr.apex.grid.GridGame;
+import fr.mehdichadi.grid.GridGame;
 
 import java.io.IOException;
 
