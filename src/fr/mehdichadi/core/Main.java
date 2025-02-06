@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Chemin du fichier de jeu .grid (À modifier selon votre cas)
-        String filePath = "taquin_2x4d.grid";
+        String filePath = "taquin_3x3.grid";
         FileType fileType = FileType.GRID;
 
         // Lecture du fichier et création de l'état initial
