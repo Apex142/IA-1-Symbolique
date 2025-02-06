@@ -125,7 +125,7 @@ public class Grid implements State {
      * @param grid La grille à convertir.
      * @return Un tableau de chaînes représentant la grille.
      */
-    private String[] toStringArray(char[][] grid) {
+    public String[] toStringArray(char[][] grid) {
         String[] result = new String[grid.length];
         for (int i = 0; i < grid.length; i++) {
             result[i] = new String(grid[i]);
@@ -156,5 +156,47 @@ public class Grid implements State {
             sb.append(new String(row)).append("\n");
         }
         return sb.toString();
+    }
+
+    /**
+     * Retourne le nombre de lignes de la grille.
+     * @return Le nombre de lignes.
+     */
+    public int getRows() {
+        return rows;
+    }
+
+    /**
+     * Retourne le nombre de colonnes de la grille.
+     * @return Le nombre de colonnes.
+     */
+    public int getCols() {
+        return cols;
+    }
+
+    /**
+     * Retourne le caractère à une position donnée dans la grille.
+     * @param row Ligne de la case.
+     * @param col Colonne de la case.
+     * @return Le caractère à la position donnée.
+     */
+    public char getTile(int row, int col) {
+        return grid[row][col];
+    }
+
+    /**
+     * Trouve la position d'une tuile dans la grille.
+     * @param tile La tuile à chercher.
+     * @return Un tableau d'entiers contenant la position de la tuile.
+     */
+    public int[] findTile(char tile) {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (grid[row][col] == tile) {
+                    return new int[]{row, col};
+                }
+            }
+        }
+        return null;
     }
 }
