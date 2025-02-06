@@ -53,6 +53,8 @@ public class Grid implements State {
         return Arrays.deepEquals(grid, goalGrid);
     }
 
+
+
     /**
      * Génère les états accessibles depuis la grille actuelle.
      * @return Une liste des grilles accessibles par un déplacement.
@@ -139,6 +141,18 @@ public class Grid implements State {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (char[] row : grid) {
+            sb.append(new String(row)).append("\n");
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Affiche la grille objectif sous forme textuelle.
+     * @return Une représentation sous forme de chaîne de la grille objectif.
+     */
+    public String toStringGoalGrid() {
+        StringBuilder sb = new StringBuilder();
+        for (char[] row : goalGrid) {
             sb.append(new String(row)).append("\n");
         }
         return sb.toString();
