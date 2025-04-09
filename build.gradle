@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application' // pour pouvoir lancer le Main
+}
+
+group = 'fr.mehdichadi'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 5
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // JavaFX (ajuster les modules selon les besoins)
+    def javafxVersion = '21'
+    def os = org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'win' :
+            org.gradle.internal.os.OperatingSystem.current().isMacOsX() ? 'mac' :
+                    'linux'
+
+    implementation "org.openjfx:javafx-base:${javafxVersion}:${os}"
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:${os}"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:${os}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Pour lancer le programme avec `gradle run`
+application {
+    mainClass = 'fr.mehdichadi.core.Main' // ✅ adapte ce nom si ton Main est ailleurs
+}
