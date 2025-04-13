@@ -186,4 +186,36 @@ public class Grid implements State {
     public int getEmptyCol() {
         return emptyCol;
     }
+    /**
+     * Retourne le nombre de lignes de la grille.
+     * @return Nombre de lignes.
+     */
+    public int getRows() {
+        return rows;
+    }
+    /**
+     * Retourne le nombre de colonnes de la grille.
+     * @return Nombre de colonnes.
+     */
+    public int getCols() {
+        return cols;}
+    /**
+     * Retourne la case à une position donnée.
+     * @param row Ligne de la case.
+     * @param col Colonne de la case.
+     * @return La case à la position spécifiée.
+     */
+    public char getTile(int row, int col) {
+        if (row < 0 || row >= rows || col < 0 || col >= cols) {
+            throw new IndexOutOfBoundsException("Position hors limites de la grille.");
+        }
+        return grid[row][col];
+    }
+    /**
+     * Retourne la case vide.
+     * @return La case vide.
+     */
+    public char getEmptyTile() {
+        return grid[emptyRow][emptyCol];
+    }
 }
