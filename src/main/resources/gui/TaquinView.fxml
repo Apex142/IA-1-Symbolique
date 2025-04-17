@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.TaquinController"
+            stylesheets="@style.css">
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <ComboBox fx:id="algorithmChoice" prefWidth="150"/>
+                <Button fx:id="browseButton" text="📂 Charger Grille" onAction="#handleBrowse"/>
+                <Button fx:id="playButton" text="▶️ Play" onAction="#handlePlay"/>
+                <Button fx:id="stepButton" text="🔂 Étape" onAction="#handleStep"/>
+                <Button fx:id="stopButton" text="⏹️ Stop" onAction="#handleStop"/>
+                <Button fx:id="resetButton" text="🔄 Reset" onAction="#handleReset"/>
+                <Label text="⏱️ Vitesse" />
+                <Slider fx:id="speedSlider" min="0" max="1" value="0.5" prefWidth="120"/>
+                <ProgressBar fx:id="progressBar" prefWidth="120"/>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <GridPane fx:id="gridDisplay"
+                  hgap="5"
+                  vgap="5"
+                  styleClass="grid-container">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+        </GridPane>
+    </center>
+
+    <right>
+        <VBox spacing="10" alignment="TOP_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <Label text="📝 Logs" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="logArea" prefWidth="300" prefHeight="400" wrapText="true"/>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>

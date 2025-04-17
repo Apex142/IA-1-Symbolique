@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'application' // pour pouvoir lancer le Main
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'application'
 }
 
 group = 'fr.mehdichadi'
@@ -11,8 +12,18 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+test {
+    jvmArgs '-Xmx4096m'
+}
+
+
 repositories {
     mavenCentral()
+}
+
+javafx {
+    version = "21"
+    modules = ["javafx.controls", 'javafx.fxml']
 }
 
 dependencies {
@@ -37,5 +48,14 @@ test {
 
 // Pour lancer le programme avec `gradle run`
 application {
-    mainClass = 'fr.mehdichadi.core.Main' // ✅ adapte ce nom si ton Main est ailleurs
+    mainClass = 'gui.TaquinApp'
+}
+
+tasks.register('runCLI', JavaExec) {
+    group = 'application'
+    description = 'Exécute le solveur Taquin en ligne de commande'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('cli.TaquinCLI')
+
+    args = ['BEST_FIRST', 'grids/taquin_2x4.grid']
 }
