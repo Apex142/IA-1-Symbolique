@@ -11,6 +11,11 @@ public abstract class SearchAlgorithm {
     protected Collection<State> openList;
     protected Set<State> closedList;
     protected int nodesExplored = 0;
+    protected int maxNodesExplored = Integer.MAX_VALUE; // ✅ Limite par défaut illimitée
+
+    public void setMaxNodesExplored(int max) {
+        this.maxNodesExplored = max;
+    }
 
     public List<Move> search(State initialState, State goalState) {
         openList = getOpenList();
@@ -24,6 +29,11 @@ public abstract class SearchAlgorithm {
         while (!openList.isEmpty()) {
             State currentState = removeFromOpenList(openList);
             nodesExplored++;
+
+            // ✅ Arrêter si on atteint la limite autorisée
+            if (nodesExplored >= maxNodesExplored) {
+                return new ArrayList<>(); // ou return null si tu préfères
+            }
 
             if (currentState.equals(goalState)) {
                 return reconstructPath(cameFrom, moveMap, currentState);
@@ -61,6 +71,7 @@ public abstract class SearchAlgorithm {
     }
 
     protected abstract Collection<State> getOpenList();
+
     protected abstract State removeFromOpenList(Collection<State> openList);
 
     private List<Move> getPossibleMoves(Grid grid) {

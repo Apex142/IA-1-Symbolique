@@ -23,14 +23,18 @@ public class PerformanceExporter {
     );
 
     private static final List<String> selectedGrids = List.of(
-            "taquin_4x4b.grid"
+           // "taquin_5x5b.grid",
+            "taquin_5x5c.grid",
+            "taquin_5x5d.grid",
+            "taquin_5x5e.grid",
+            "taquin_5x5f.grid"
     );
 
     public static void main(String[] args) {
-        File output = new File("comparaison.csv");
+        File output = new File("comparaison2.csv");
 
         try (PrintWriter writer = new PrintWriter(output)) {
-            writer.println("Fichier,Algorithme,Étapes,Nœuds Explorés,Durée(ms),Ouvert,Fermé");
+            writer.println("Fichier,Algorithme,Nœuds Explorés,Durée(ms),Ouvert,Fermé,Statut");
 
             for (String gridFile : selectedGrids) {
                 File file = new File("src/main/resources/grids/" + gridFile);
@@ -53,18 +57,19 @@ public class PerformanceExporter {
                     };
 
                     SearchRunner runner = new SearchRunner();
+                    runner.setMaxNodesExplored(50000); // ✅ Limite définie ici
                     SearchReport report = runner.runSearch(algo, initial, goal);
 
-                    int steps = report.getSolution() == null ? 0 : report.getSolution().size();
+                    String status = report.getNodesExplored() >= 50000 ? "LIMIT" : "OK";
 
-                    writer.printf("%s,%s,%d,%d,%d,%d,%d%n",
+                    writer.printf("%s,%s,%d,%d,%d,%d,%s%n",
                             gridFile,
                             algoType,
-                            steps,
                             report.getNodesExplored(),
                             report.getDurationMillis(),
                             report.getOpenList().size(),
-                            report.getClosedList().size()
+                            report.getClosedList().size(),
+                            status
                     );
                     System.out.println("✅ Terminé : " + gridFile + " avec " + algoType);
                 }
